@@ -18,6 +18,17 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+.responsive-card {
+    width: 100%;
+    float: left;
+}
+
+@media screen {
+    .responsive-card {
+        width: 30%;
+    }
+}
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 

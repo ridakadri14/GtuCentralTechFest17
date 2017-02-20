@@ -22,6 +22,52 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
+.service('breadCrumbsService', function ($location) {
+            this.showBreadCrumbs = function () {
+                document.getElementById("breadcrumb").innerHTML = "";;
+  
+	var state=$location.path().slice(5).split("/");
+	var breadcrumbs=[];
+	for(var i=0;i<state.length;i++)
+	{
+		if(i==0)
+			breadcrumbs.push("#/app/"+state[0]);
+		else
+			breadcrumbs.push(breadcrumbs[i-1]+"/"+state[i]);
+	}
+	//breadcrumbs.push("#/app/"+state[0]);
+	//breadcrumbs.push("#/app/"+state[0]+"/"+state[1]);
+	//breadcrumbs.push("#/app/"+state[0]+"/"+state[1]+"/"+state[2]); 
+	 
+	 for(var i=0;i<state.length;i++)
+	 {
+		
+		var a = document.createElement('a');
+		var linkText = document.createTextNode(state[i]);
+		a.appendChild(linkText);
+		a.href = breadcrumbs[i];
+		a.style="text-decoration:none;font-size:20px;";
+		var span = document.createElement("span");
+		span.innerHTML = "&nbsp;"+">"+"&nbsp;"; 
+		span.style="font-size:30px;";
+		document.getElementById("breadcrumb").appendChild(a);
+		document.getElementById("breadcrumb").appendChild(span);
+
+	 }
+     };
+            
+})
+
+.service('disableBackService', function ($ionicHistory) {
+            this.disableBack = function () {
+                $ionicHistory.nextViewOptions({
+			disableBack: true
+		});
+     };
+            
+})
+
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -34,89 +80,116 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
   .state('app.technicalEvents', {
     url: '/technicalEvents',
+	cache: false,
     views: {
       'menuContent': {
-        templateUrl: 'templates/technicalEvents.html'
+        templateUrl: 'templates/technicalEvents.html',
+		controller: 'TechnicalEventsCtrl'
       }
     }
   })
   
   .state('app.events', {
-    url: '/events/:sectionId',
+    url: '/technicalEvents/:sectionId',
+	cache: false,
     views: {
       'menuContent': {
         templateUrl: 'templates/events.html',
-        controller: 'PlaylistCtrl'
+        controller: 'EventsCtrl'
       }
     }
   })
   
   .state('app.event', {
-    url: '/events/:sectionId/:eventId',
+    url: '/technicalEvents/:sectionId/:eventId',
+	cache: false,
     views: {
       'menuContent': {
         templateUrl: 'templates/event.html',
-        controller: 'PlaylistCtrl'
+        controller: 'EventCtrl'
       }
     }
   })
   
   .state('app.quizzes', {
       url: '/quizzes',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/quizzes.html'
+          templateUrl: 'templates/quizzes.html',
+		  controller: 'QuizzesCtrl'
         }
       }
     })
 	
   .state('app.quiz', {
       url: '/quizzes/:quizId',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/quiz.html'
+          templateUrl: 'templates/quiz.html',
+		  controller: 'QuizCtrl'
         }
       }
     })	
 	
   .state('app.workshops', {
       url: '/workshops',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/workshops.html'
+          templateUrl: 'templates/workshops.html',
+		  controller: 'WorkshopsCtrl'
         }
       }
     })
 	
    .state('app.workshop', {
       url: '/workshops/:workshopId',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/workshop.html'
+          templateUrl: 'templates/workshop.html',
+		  controller: 'WorkshopCtrl'
         }
       }
     })	
 	
 	.state('app.aboutUs', {
       url: '/aboutUs',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/aboutUs.html'
+          templateUrl: 'templates/aboutUs.html',
+		  controller: 'AboutUsCtrl'
         }
       }
     })
 	
 	.state('app.contactUs', {
       url: '/contactUs',
+	  cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'templates/contactUs.html'
+          templateUrl: 'templates/contactUs.html',
+		  controller: 'ContactUsCtrl'
         }
       }
     })
 	
+	.state('app.share', {
+      url: '/share',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/share.html',
+		  controller: 'ShareCtrl'
+        }
+      }
+    })	
+	
     .state('app.playlists', {
       url: '/playlists',
+	  cache: false,
       views: {
         'menuContent': {
           templateUrl: 'templates/playlists.html',
@@ -126,6 +199,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
   .state('app.single', {
+	cache: false,
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
