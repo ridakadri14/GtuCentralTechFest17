@@ -51,15 +51,77 @@ angular.module('starter.controllers', [])
 
 .controller('ShareCtrl', function($scope, $stateParams) {
 
-	$scope.whatsappShare=function(){
-    window.plugins.socialsharing.shareViaWhatsApp('Digital Signature Maker', null /* img */, "https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker" /* url */, null, function(errormsg){alert("Error: Cannot Share")});
-  };
-   $scope.twitterShare=function(){
-    window.plugins.socialsharing.shareViaTwitter('Digital Signature Maker', null /* img */, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker', null, function(errormsg){alert("Error: Cannot Share")});
-  };
-   $scope.OtherShare=function(){
-     window.plugins.socialsharing.share('Digital Signature Maker', null, null, 'https://play.google.com/store/apps/details?id=com.prantikv.digitalsignaturemaker');
-  };
+	var branchUniversalObj = null;
+	
+		//branch stuff
+	
+		var properties = {
+			canonicalIdentifier: 'search',
+			canonicalUrl: 'https://gtutechfest.app.link',
+			title: 'gtutechfest',
+			contentDescription: 'gtutechfest',
+			contentImageUrl: 'http://lorempixel.com/400/400/',
+			contentMetadata: {
+				'alias':'playlists'
+			}
+		};
+
+		Branch.createBranchUniversalObject(properties).then(function(res) {
+			branchUniversalObj = res;
+			alert('Response: ' + JSON.stringify(res));
+			
+		}).catch(function(err) {
+			alert('Error: ' + JSON.stringify(err));
+		});
+
+		//branch
+					
+					
+    	
+	
+
+    $scope.whatsappShare=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.shareViaWhatsApp("Gtu Techfest", null /* img */, res.url /* url */, null, function(errormsg){alert("Error: Cannot Share")});
+	   });
+    }
+
+	$scope.twitterShare=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.shareViaTwitter("Gtu Techfest", null /* img */, res.url /* url */, null, function(errormsg){alert("Error: Cannot Share")});
+	   });
+    }
+	
+	$scope.OtherShare=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.share('Gtu Techfest', null, null, res.url);
+	   });
+    }
+
 })
 
 .controller('TechnicalEventsCtrl', function($scope, $stateParams, $rootScope, $location, $ionicHistory, breadCrumbsService,disableBackService) {
@@ -176,6 +238,33 @@ angular.module('starter.controllers', [])
   
 })
 
+.controller('AboutUsCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, $cordovaGeolocation) {
+	
+	var options = {timeout: 10000, enableHighAccuracy: true};
+ 
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+ 
+    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	
+    var mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+ 
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+ 
+	var marker = new google.maps.Marker({
+          position: latLng,
+          map: $scope.map,
+          title: 'LDCE'
+        });
+ 
+  }, function(error){
+    alert("To continue, let your device turn on location and wifi");
+  });
+  
+})
 
 .controller('PlaylistsCtrl', function($scope,$rootScope,$location,$ionicHistory) {
   
