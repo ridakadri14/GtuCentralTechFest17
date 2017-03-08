@@ -1,16 +1,16 @@
 <ion-view view-title="Browse">
-  <ion-content>
+  <ion-content class="background">
 
 	<div class="list card responsive-card" ng-repeat="quiz in quizzes">
-      <div class="item item-text-wrap">
-        <a style="text-decoration:none;" href="#/app/quizzes/{{quiz.title}}">
+      <div class="item item-text-wrap item-divider item-stable">
+        <a style="text-decoration:none;" ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
 			<h3>{{quiz.title}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>
-      <div >
-		<a href="#/app/quizzes/{{quiz.title}}">
-		<img width="100%" height="100%" ng-src="https://cdn3.iconfinder.com/data/icons/abstract-1/512/duration-128.png">
+      <div class="item-image">
+		<a ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
+		<img width="100%" height="100%" ng-src="img/event.jpg">
 		</a>
         <!--<img ng-src="{{video.snippet.thumbnails.high.url}}">-->
       </div>

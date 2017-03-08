@@ -1,5 +1,70 @@
-<ion-view view-title="Playlist">
-  <ion-content>
-    <h1>Playlist</h1>
+<ion-view view-title="eventName">
+<ion-floating-button click="share()" has-footer="true" button-color="#2AC9AA" icon="ion-android-share" iconColor="#fff">
+</ion-floating-button>
+  <ion-content class="background"><br/>
+  
+	<div class="item-image">
+    <img class="image" src={{event.event_pic}}>
+	<figcaption>attend my event plz!!!</figcaption>
+	</div>
+	
+    <div class="list card">
+      <div class="item item-divider item-stable">
+	  <h3>Description</h3>
+	  </div>
+	  <div class="item item-text-wrap">
+			<p>{{event.description}}</p>
+	</div>
+	</div>
+	
+	<div class="list card" >
+		<div class="item item-divider item-stable">
+	  <h3>Problem Statement</h3>
+	  </div>
+    <div class="item item-text-wrap">
+		<p>{{event.problem_statement}}</p>
+	  </div>
+	</div>
+	
+	<div class="list card">
+	<div class="button-bar">
+	  <a class="button" id="rules" ng-click="rules()" style="background-color:white;">Rules</a>
+	  <a class="button" id="specification" ng-click="specification()">Specification</a>
+	  <a class="button" id="judgingCriteria" ng-click="judgingCriteria()">Judging Criteria</a>
+	  <a class="button" id="attachment" ng-click="attachment()">Attachment</a>
+	</div>
+	<div id="info" class="item item-text-wrap"><p>{{event.rules}}</p></div>
+	</div>
+	
+	<div class="list card">
+      <div class="item item-divider item-stable">
+	  <h3>Event Manager</h3>
+	  </div>
+	  <div ng-repeat="manager in event.event_manager">
+	  <p>{{manager[0]}}</p>
+	  <p><i class="icon ion-ios-telephone"></i>{{manager[1]}}</p>
+	  <p><i class="icon ion-email"></i>&nbsp;&nbsp;{{manager[2]}}</p>  
+	  </div>
+
+    </div>
+	
+	<!--<div class="list card" >
+	<div class="item item-divider">
+	  <h3>Devang Bhuva</h3>
+	 </div>
+    <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;1234567891</p>
+	<p><i class="icon ion-email"></i>&nbsp;&nbsp;dasdasddfweffew@gmail.com</p>  
+	</div>
+	
+	<div class="list card" >
+	<div class="item item-divider">
+	  <h3>Devang Bhuva</h3>
+	 </div>
+    <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;1234567891</p>
+	<p><i class="icon ion-email"></i>&nbsp;&nbsp;dasdasddfweffew@gmail.com</p>  
+	</div>-->
+	
+	
+	
   </ion-content>
 </ion-view>

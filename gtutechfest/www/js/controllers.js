@@ -49,81 +49,6 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('ShareCtrl', function($scope, $stateParams) {
-
-	var branchUniversalObj = null;
-	
-		//branch stuff
-	
-		var properties = {
-			canonicalIdentifier: 'search',
-			canonicalUrl: 'https://gtutechfest.app.link',
-			title: 'gtutechfest',
-			contentDescription: 'gtutechfest',
-			contentImageUrl: 'http://lorempixel.com/400/400/',
-			contentMetadata: {
-				'alias':'playlists'
-			}
-		};
-
-		Branch.createBranchUniversalObject(properties).then(function(res) {
-			branchUniversalObj = res;
-			alert('Response: ' + JSON.stringify(res));
-			
-		}).catch(function(err) {
-			alert('Error: ' + JSON.stringify(err));
-		});
-
-		//branch
-					
-					
-    	
-	
-
-    $scope.whatsappShare=function(){
-	   branchUniversalObj.generateShortUrl({
-		// put your link properties here
-	   }, {
-		// put your control parameters here
-		"$android_url":"https://google.com",
-		"$ios_url":"https://google.com",
-		"$android_deeplink_path" : "/playlists"
-	   }).then(function (res) {
-		
-		window.plugins.socialsharing.shareViaWhatsApp("Gtu Techfest", null /* img */, res.url /* url */, null, function(errormsg){alert("Error: Cannot Share")});
-	   });
-    }
-
-	$scope.twitterShare=function(){
-	   branchUniversalObj.generateShortUrl({
-		// put your link properties here
-	   }, {
-		// put your control parameters here
-		"$android_url":"https://google.com",
-		"$ios_url":"https://google.com",
-		"$android_deeplink_path" : "/playlists"
-	   }).then(function (res) {
-		
-		window.plugins.socialsharing.shareViaTwitter("Gtu Techfest", null /* img */, res.url /* url */, null, function(errormsg){alert("Error: Cannot Share")});
-	   });
-    }
-	
-	$scope.OtherShare=function(){
-	   branchUniversalObj.generateShortUrl({
-		// put your link properties here
-	   }, {
-		// put your control parameters here
-		"$android_url":"https://google.com",
-		"$ios_url":"https://google.com",
-		"$android_deeplink_path" : "/playlists"
-	   }).then(function (res) {
-		
-		window.plugins.socialsharing.share('Gtu Techfest', null, null, res.url);
-	   });
-    }
-
-})
-
 .controller('TechnicalEventsCtrl', function($scope, $stateParams, $rootScope, $location, $ionicHistory, breadCrumbsService,disableBackService) {
 	$scope.sections = [
     { title: 'Reggae', id: 1 },
@@ -154,12 +79,17 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
   
+  $scope.getId=function(eventId)
+  {
+	  $rootScope.id=eventId-1;
+  }
+  
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
   
 })
 
-.controller('EventCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
+.controller('EventCtrl', function($scope, $http, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
 	
 	/*document.getElementById("breadcrumb").innerHTML = "";;
   
@@ -183,9 +113,99 @@ angular.module('starter.controllers', [])
 
 	 }*/
 	 
-	 breadCrumbsService.showBreadCrumbs();
+	breadCrumbsService.showBreadCrumbs();
 	 
 	disableBackService.disableBack();
+	
+	$http.get('js/gtu_central_techfest_event.json')
+        .then(function(response){
+			var id=$rootScope.id;
+           $scope.event=response.data[id];
+		   //alert(id+JSON.stringify($scope.event));
+
+        },function(error){
+          alert(JSON.stringify(error));
+      });
+	
+	//share
+	
+	/*var event=$location.path().slice(28);
+	
+	var branchUniversalObj = null;
+	
+		//branch stuff
+	
+		var properties = {
+			canonicalIdentifier: 'search',
+			canonicalUrl: 'https://gtutechfest.app.link',
+			title: event,
+			contentDescription: 'Check out this event!!!',
+			contentImageUrl: 'http://lorempixel.com/400/400/',
+			contentMetadata: {
+				'alias':'playlists',
+				'eventName':event
+			}
+		};
+
+		Branch.createBranchUniversalObject(properties).then(function(res) {
+			branchUniversalObj = res;
+			alert('Response: ' + JSON.stringify(res));
+			
+		}).catch(function(err) {
+			alert('Error: ' + JSON.stringify(err));
+		});
+
+		//branch
+					
+	
+	$scope.share=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.share('Gtu Techfest', null, null, res.url);
+	   });
+    }*/
+	
+	//share
+	
+	//accordian
+	
+	$scope.rules=function(){
+		document.getElementById("rules").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.specification=function(){
+		document.getElementById("specification").style.backgroundColor = "white";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.judgingCriteria=function(){
+		document.getElementById("judgingCriteria").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.attachment=function(){
+		document.getElementById("attachment").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	
+	//accordian
 	
 })
 
@@ -200,16 +220,111 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
   
+  $scope.getId=function(eventId)
+  {
+	  $rootScope.id=eventId-1;
+  }
+  
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
   
 })
 
-.controller('QuizCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
+.controller('QuizCtrl', function($scope, $http, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
 	
 	
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
+  
+  $http.get('js/gtu_central_techfest_event.json')
+        .then(function(response){
+			var id=$rootScope.id;
+           $scope.event=response.data[id];
+		   //alert(id+JSON.stringify($scope.event));
+
+        },function(error){
+          alert(JSON.stringify(error));
+      });
+  
+  //share
+	
+	/*var event=$location.path().slice(13);
+	alert(event);
+	var branchUniversalObj = null;
+	
+		//branch stuff
+	
+		var properties = {
+			canonicalIdentifier: 'search',
+			canonicalUrl: 'https://gtutechfest.app.link',
+			title: event,
+			contentDescription: 'Check out this event!!!',
+			contentImageUrl: 'http://lorempixel.com/400/400/',
+			contentMetadata: {
+				'alias':'playlists',
+				'eventName':event
+			}
+		};
+
+		Branch.createBranchUniversalObject(properties).then(function(res) {
+			branchUniversalObj = res;
+			alert('Response: ' + JSON.stringify(res));
+			
+		}).catch(function(err) {
+			alert('Error: ' + JSON.stringify(err));
+		});
+
+		//branch
+					
+	
+	$scope.share=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.share('Gtu Techfest', null, null, res.url);
+	   });
+    }*/
+	
+	//share
+	
+	//accordian
+	
+	$scope.rules=function(){
+		document.getElementById("rules").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.specification=function(){
+		document.getElementById("specification").style.backgroundColor = "white";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.judgingCriteria=function(){
+		document.getElementById("judgingCriteria").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.attachment=function(){
+		document.getElementById("attachment").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	
+	//accordian
   
 })
 
@@ -224,17 +339,110 @@ angular.module('starter.controllers', [])
     { title: 'Cowbell', id: 6 }
   ];
   
+  $scope.getId=function(eventId)
+  {
+	  $rootScope.id=eventId-1;
+  }
+  
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
   
 })
 
-.controller('WorkshopCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
+.controller('WorkshopCtrl', function($scope, $http, $stateParams, $location, $ionicHistory, $rootScope, breadCrumbsService,disableBackService) {
 	
-	
-  
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
+  
+  $http.get('js/gtu_central_techfest_event.json')
+        .then(function(response){
+			var id=$rootScope.id;
+           $scope.event=response.data[id];
+		   //alert(id+JSON.stringify($scope.event));
+
+        },function(error){
+          alert(JSON.stringify(error));
+      });
+  
+  //share
+	
+	/*var event=$location.path().slice(15);
+	alert(event);
+	var branchUniversalObj = null;
+	
+		//branch stuff
+	
+		var properties = {
+			canonicalIdentifier: 'search',
+			canonicalUrl: 'https://gtutechfest.app.link',
+			title: event,
+			contentDescription: 'Check out this event!!!',
+			contentImageUrl: 'http://lorempixel.com/400/400/',
+			contentMetadata: {
+				'alias':'playlists',
+				'eventName':event
+			}
+		};
+
+		Branch.createBranchUniversalObject(properties).then(function(res) {
+			branchUniversalObj = res;
+			alert('Response: ' + JSON.stringify(res));
+			
+		}).catch(function(err) {
+			alert('Error: ' + JSON.stringify(err));
+		});
+
+		//branch
+					
+	
+	$scope.share=function(){
+	   branchUniversalObj.generateShortUrl({
+		// put your link properties here
+	   }, {
+		// put your control parameters here
+		"$android_url":"https://google.com",
+		"$ios_url":"https://google.com",
+		"$android_deeplink_path" : "/playlists"
+	   }).then(function (res) {
+		
+		window.plugins.socialsharing.share('Gtu Techfest', null, null, res.url);
+	   });
+    }*/
+	
+	//share
+	
+	//accordian
+	
+	$scope.rules=function(){
+		document.getElementById("rules").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.specification=function(){
+		document.getElementById("specification").style.backgroundColor = "white";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.judgingCriteria=function(){
+		document.getElementById("judgingCriteria").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	$scope.attachment=function(){
+		document.getElementById("attachment").style.backgroundColor = "white";
+		document.getElementById("specification").style.backgroundColor = "#00d4bd";
+		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
+		document.getElementById("rules").style.backgroundColor = "#00d4bd";
+		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+	};
+	
+	//accordian
   
 })
 

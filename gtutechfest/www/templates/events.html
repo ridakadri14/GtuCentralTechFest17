@@ -1,15 +1,15 @@
 <ion-view view-title="Playlist">
-  <ion-content>
+  <ion-content class="background">
     <div class="list card" ng-repeat="event in events">
-      <div class="item item-text-wrap">
-        <a style="text-decoration:none;" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
+      <div class="item item-text-wrap item-divider item-stable">
+        <a style="text-decoration:none;" ng-click="getId(event.id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
 			<h3>{{event.title}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>
-      <div >
-		<a href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
-		<img ng-src="https://cdn3.iconfinder.com/data/icons/abstract-1/512/duration-128.png">
+      <div class="item-image">
+		<a ng-click="getId(event.id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
+		<img ng-src="img/event.jpg">
 		</a>
         <!--<img ng-src="{{video.snippet.thumbnails.high.url}}">-->
       </div>
