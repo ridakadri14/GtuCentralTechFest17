@@ -62,7 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 		var linkText = document.createTextNode(state[i]);
 		a.appendChild(linkText);
 		a.href = breadcrumbs[i];
-		a.style="text-decoration:none;font-size:20px;";
+		a.style="text-decoration:none;font-size:20px;color:red;";
 		var span = document.createElement("span");
 		span.innerHTML = "&nbsp;"+">"+"&nbsp;"; 
 		span.style="font-size:30px;";

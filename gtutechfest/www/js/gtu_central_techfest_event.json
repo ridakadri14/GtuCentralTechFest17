@@ -13,16 +13,11 @@
    "rules": [ 
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
       "Aliquam tincidunt mauris eu risus.",
-      "Vestibulum auctor dapibus neque.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Aliquam tincidunt mauris eu risus.",
       "Vestibulum auctor dapibus neque."
     ],
    
    "specification": [ 
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Aliquam tincidunt mauris eu risus.",
-      "Vestibulum auctor dapibus neque.",
       "Aliquam tincidunt mauris eu risus.",
       "Vestibulum auctor dapibus neque."
     ],
@@ -30,7 +25,6 @@
    "judging_criteria": [ 
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
       "Aliquam tincidunt mauris eu risus.",
-      "Vestibulum auctor dapibus neque.",
       "Vestibulum auctor dapibus neque."
     ],
 

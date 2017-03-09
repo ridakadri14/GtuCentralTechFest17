@@ -18,8 +18,66 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
-
+$calm:                            #435a6d !default;
 $stable:                          #00d4bd !default;
+
+.event-caption { 
+   position: absolute; 
+   top:130px; 
+   left: 20px;
+   right:20px;
+   //width: 100%; 
+}
+ 
+.event-caption span{
+   color: white; 
+   //opacity: 0.5;
+   font: bold 21px/42px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 5px;
+}    
+
+.event-manager-title{
+	text-align:center;
+}
+
+//accordian
+
+.list .item.item-stable{
+	color:white;
+}
+
+.list .item.item-accordion {
+  color:black;
+  background-color:white;
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+//accordian
+
+.bar {
+    border: 0px !important;
+    border-bottom-color: transparent !important;
+	background-image: none !important;
+	background-size: 100% 0px;
+    border-bottom: none !important;
+	border-top-color: transparent !important;
+    border-top: none !important;
+}
 
 .image{
 	padding-left:20px;
@@ -27,12 +85,13 @@ $stable:                          #00d4bd !default;
 	padding-bottom:5px;
 }
 
-.cardTitle{
-	background-color:#00d4bd;
+.background, .background ion-item{
+    background-color:#435a6d;
 }
 
-.background{
-    background-color:#435a6d;
+.left-menu ion-item, .left-menu .item a{
+	background-color:#435a6d;
+	color:$stable;
 }
 
 .responsive-card {

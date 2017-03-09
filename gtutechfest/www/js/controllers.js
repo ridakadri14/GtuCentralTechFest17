@@ -117,15 +117,43 @@ angular.module('starter.controllers', [])
 	 
 	disableBackService.disableBack();
 	
+	//json
+	
 	$http.get('js/gtu_central_techfest_event.json')
         .then(function(response){
-			var id=$rootScope.id;
-           $scope.event=response.data[id];
-		   //alert(id+JSON.stringify($scope.event));
+			//var id=$rootScope.id;
+           $scope.event=response.data[0];
+		   
+		   $scope.names=['Rules','Specification','Judging Criteria','Attachments'];
+		   $scope.groups = [];
+		   for (var i=0; i<4; i++) {
+			$scope.groups[i] = {
+				name: $scope.names[i],
+				items: $scope.event['rules']
+			};
+   
+		   }
 
         },function(error){
           alert(JSON.stringify(error));
       });
+	
+	//json
+	
+	//accordian
+	
+	$scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+	
+	//accordian
 	
 	//share
 	
@@ -174,38 +202,7 @@ angular.module('starter.controllers', [])
 	
 	//share
 	
-	//accordian
 	
-	$scope.rules=function(){
-		document.getElementById("rules").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.specification=function(){
-		document.getElementById("specification").style.backgroundColor = "white";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.judgingCriteria=function(){
-		document.getElementById("judgingCriteria").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.attachment=function(){
-		document.getElementById("attachment").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	
-	//accordian
 	
 })
 
@@ -236,15 +233,43 @@ angular.module('starter.controllers', [])
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
   
-  $http.get('js/gtu_central_techfest_event.json')
+  //json
+	
+	$http.get('js/gtu_central_techfest_event.json')
         .then(function(response){
-			var id=$rootScope.id;
-           $scope.event=response.data[id];
-		   //alert(id+JSON.stringify($scope.event));
+			//var id=$rootScope.id;
+           $scope.event=response.data[0];
+		   
+		   $scope.names=['Rules','Specification','Judging Criteria','Attachments'];
+		   $scope.groups = [];
+		   for (var i=0; i<4; i++) {
+			$scope.groups[i] = {
+				name: $scope.names[i],
+				items: $scope.event['rules']
+			};
+   
+		   }
 
         },function(error){
           alert(JSON.stringify(error));
       });
+	
+	//json
+	
+	//accordian
+	
+	$scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+	
+	//accordian
   
   //share
 	
@@ -293,38 +318,6 @@ angular.module('starter.controllers', [])
 	
 	//share
 	
-	//accordian
-	
-	$scope.rules=function(){
-		document.getElementById("rules").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.specification=function(){
-		document.getElementById("specification").style.backgroundColor = "white";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.judgingCriteria=function(){
-		document.getElementById("judgingCriteria").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.attachment=function(){
-		document.getElementById("attachment").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	
-	//accordian
   
 })
 
@@ -354,15 +347,43 @@ angular.module('starter.controllers', [])
   breadCrumbsService.showBreadCrumbs();
   disableBackService.disableBack();
   
-  $http.get('js/gtu_central_techfest_event.json')
+  //json
+	
+	$http.get('js/gtu_central_techfest_event.json')
         .then(function(response){
-			var id=$rootScope.id;
-           $scope.event=response.data[id];
-		   //alert(id+JSON.stringify($scope.event));
+			//var id=$rootScope.id;
+           $scope.event=response.data[0];
+		   
+		   $scope.names=['Rules','Specification','Judging Criteria','Attachments'];
+		   $scope.groups = [];
+		   for (var i=0; i<4; i++) {
+			$scope.groups[i] = {
+				name: $scope.names[i],
+				items: $scope.event['rules']
+			};
+   
+		   }
 
         },function(error){
           alert(JSON.stringify(error));
       });
+	
+	//json
+	
+	//accordian
+	
+	$scope.toggleGroup = function(group) {
+    if ($scope.isGroupShown(group)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = group;
+    }
+  };
+  $scope.isGroupShown = function(group) {
+    return $scope.shownGroup === group;
+  };
+	
+	//accordian
   
   //share
 	
@@ -410,49 +431,25 @@ angular.module('starter.controllers', [])
     }*/
 	
 	//share
-	
-	//accordian
-	
-	$scope.rules=function(){
-		document.getElementById("rules").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.specification=function(){
-		document.getElementById("specification").style.backgroundColor = "white";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.judgingCriteria=function(){
-		document.getElementById("judgingCriteria").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("attachment").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	$scope.attachment=function(){
-		document.getElementById("attachment").style.backgroundColor = "white";
-		document.getElementById("specification").style.backgroundColor = "#00d4bd";
-		document.getElementById("judgingCriteria").style.backgroundColor = "#00d4bd";
-		document.getElementById("rules").style.backgroundColor = "#00d4bd";
-		document.getElementById("info").innerHTML="<p>of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
-	};
-	
-	//accordian
   
 })
 
-.controller('AboutUsCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, $cordovaGeolocation) {
+.controller('ContactUsCtrl', function($scope, $stateParams, $location, $ionicHistory, $rootScope, $cordovaGeolocation, breadCrumbsService, disableBackService) {
+	
+	//services
+	
+	breadCrumbsService.showBreadCrumbs();
+	disableBackService.disableBack();
+	
+	//services
 	
 	var options = {timeout: 10000, enableHighAccuracy: true};
  
   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
  
-    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+   
+    var latLng = new google.maps.LatLng(23.0338, 72.5466);
+	
 	
     var mapOptions = {
       center: latLng,
@@ -461,16 +458,84 @@ angular.module('starter.controllers', [])
     };
  
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+	
+	 google.maps.event.addListenerOnce($scope.map, 'idle', function(){
  
-	var marker = new google.maps.Marker({
-          position: latLng,
-          map: $scope.map,
-          title: 'LDCE'
-        });
+		  var marker = new google.maps.Marker({
+			  map: $scope.map,
+			  animation: google.maps.Animation.DROP,
+			  position: latLng,
+			  title: 'LDCE'
+		  });   
+
+		   var content = '<div id="iw-container">' +
+                    '<div><h6>Ld College Of Engineering</h6>'+
+                      '<p style="font-family:courier">University Road,<br/> Ahmedabad 380015</p></div>'+
+                      '<div class="iw-subTitle"><h6>Contacts</div>' +
+                      '<p style="font-family:courier">Phone. +351 234 320 600<br>e-mail: gtucentraltechfest@gmail.com</p>'+
+                    '</div>' +
+                  '</div>';
+
+		 
+		  var infoWindow = new google.maps.InfoWindow({
+			  content: content
+		  });
+		  
+		   infoWindow.open($scope.map, marker);
+		 
+		  google.maps.event.addListener(marker, 'click', function () {
+			  infoWindow.open($scope.map, marker);
+			 
+		  });
+		 
+		});
+ 
+	
  
   }, function(error){
     alert("To continue, let your device turn on location and wifi");
+	
+	
+	
   });
+  
+  
+})
+
+.controller('AboutUsCtrl', function($scope, $rootScope, $http) {
+	
+	
+	//json
+	
+	$http.get('js/gtu_central_techfest_event.json')
+        .then(function(response){
+			//var id=$rootScope.id;
+           $scope.event=response.data[0];
+		   
+		   $scope.names=['Rules','Specification','Judging Criteria','Attachments'];
+		   $scope.groups = [];
+		   for (var i=0; i<4; i++) {
+			$scope.groups[i] = {
+				name: $scope.names[i],
+				items: $scope.event['rules']
+			};
+   
+		   }
+
+        },function(error){
+          alert(JSON.stringify(error));
+      });
+	
+	//json
+	
+	 
+	 //$scope.json=['rules','specification','judging_criteria','attachment'];
+	 
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
   
 })
 

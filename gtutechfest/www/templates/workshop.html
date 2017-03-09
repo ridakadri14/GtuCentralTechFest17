@@ -3,9 +3,10 @@
 </ion-floating-button>
   <ion-content class="background"><br/>
   
+	
 	<div class="item-image">
-    <img class="image" src={{event.event_pic}}>
-	<figcaption>attend my event plz!!!</figcaption>
+	<img class="image" src={{event.event_pic}}>
+	<p class="event-caption"><span>Attend my event, plz!!!</span></p>
 	</div>
 	
     <div class="list card">
@@ -26,27 +27,41 @@
 	  </div>
 	</div>
 	
-	<div class="list card">
-	<div class="button-bar">
-	  <a class="button" id="rules" ng-click="rules()" style="background-color:white;">Rules</a>
-	  <a class="button" id="specification" ng-click="specification()">Specification</a>
-	  <a class="button" id="judgingCriteria" ng-click="judgingCriteria()">Judging Criteria</a>
-	  <a class="button" id="attachment" ng-click="attachment()">Attachment</a>
-	</div>
-	<div id="info" class="item item-text-wrap"><p>{{event.rules}}</p></div>
-	</div>
+	<ion-list>
+        <div class="list card" ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+    </ion-list>
 	
-	<div class="list card">
-      <div class="item item-divider item-stable">
-	  <h3>Event Manager</h3>
-	  </div>
+	<h3 class="event-manager-title">Event Manager</h3>
+	
+	<div class="list card event-manager" ng-repeat="manager in event.event_manager">
+      <p>{{manager[0]}}</p>
+	  <p><i class="icon ion-ios-telephone"></i>{{manager[1]}}</p>
+	  <p><i class="icon ion-email"></i>&nbsp;&nbsp;{{manager[2]}}</p> 
+
+    </div>
+	
+	<!--<div class="list card">
+
 	  <div ng-repeat="manager in event.event_manager">
 	  <p>{{manager[0]}}</p>
 	  <p><i class="icon ion-ios-telephone"></i>{{manager[1]}}</p>
 	  <p><i class="icon ion-email"></i>&nbsp;&nbsp;{{manager[2]}}</p>  
 	  </div>
 
-    </div>
+    </div>-->
 	
 	<!--<div class="list card" >
 	<div class="item item-divider">
