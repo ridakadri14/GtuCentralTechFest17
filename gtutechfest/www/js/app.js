@@ -64,7 +64,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 		a.href = breadcrumbs[i];
 		a.style="text-decoration:none;font-size:20px;color:red;";
 		var span = document.createElement("span");
-		span.innerHTML = "&nbsp;"+">"+"&nbsp;"; 
+		span.innerHTML = "&nbsp;"+"/"+"&nbsp;"; 
 		span.style="font-size:30px;";
 		document.getElementById("breadcrumb").appendChild(a);
 		document.getElementById("breadcrumb").appendChild(span);
@@ -93,6 +93,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
     controller: 'AppCtrl'
   })
 
+  .state('app.register', {
+    url: '/register',
+	cache: false,
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/register.html',
+		controller: 'RegisterCtrl'
+      }
+    }
+  })
+  
   .state('app.technicalEvents', {
     url: '/technicalEvents',
 	cache: false,

@@ -40,13 +40,45 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
   
-  //breadcrumb
-  
-  
-  
-  
-  //breadcrumb
-  
+})
+
+.controller('RegisterCtrl', function($scope) {
+	 	 
+	$scope.sections=[{sectionId:1, sectionName:"computer"},{sectiond:2,sectionName:"IT"}];
+	$scope.Events = [{EventId: 1,sectionId:1,EventName: "compevent1"},
+					 {EventId: 2,sectionId:1,EventName: "compevent12"},
+					 {EventId: 1,sectionId:2,EventName: "ITevent3"},
+					 {EventId: 2,sectionId:2,EventName: "ITevent3"}];
+	$scope.members=[{memberNo:1},{memberNo:2},{memberNo:3},{memberNo:4}];
+		
+	$scope.loadEvents=function(id)
+	{
+		console.log(id);
+		$scope.EventList=[];
+		angular.forEach($scope.Events,function(Event)
+		{
+			if(Event.sectionId==id)
+			{
+				$scope.EventList.push(Event);
+				console.log(Event);
+			}
+		})
+			
+	};
+	var i=0;
+	$scope.teamLeader= {name: "",college:"",branch: "",enrollmentNO: "",mobileNo:"",email: ""};
+		
+	$scope.others=[]
+
+	$scope.addMember = function(id) {
+		$scope.memberNo=(id.memberNo)-1;
+		console.log($scope.memberNo);
+		for(var i=0;i<$scope.memberNo;i++)
+		{
+			$scope.others.push($scope.teamLeader);
+			console.log($scope.others[i]);
+		}
+	}	
 })
 
 .controller('TechnicalEventsCtrl', function($scope, $stateParams, $rootScope, $location, $ionicHistory, breadCrumbsService,disableBackService) {

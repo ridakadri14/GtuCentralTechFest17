@@ -1,5 +1,5 @@
 <ion-view view-title="eventName">
-<ion-floating-button click="share()" has-footer="true" button-color="#2AC9AA" icon="ion-android-share" iconColor="#fff">
+<ion-floating-button click="share()" has-footer="true" button-color="#00d4bd" icon="ion-android-share" iconColor="#fff">
 </ion-floating-button>
   <ion-content class="background"><br/>
   
@@ -31,7 +31,7 @@
         <div class="list card" ng-repeat="group in groups">
           <ion-item class="item-stable"
                     ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
+                    ng-class="{accordionActive: isGroupShown(group)}">
               <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             &nbsp;
             {{group.name}}
@@ -46,9 +46,9 @@
 	
 	<h3 class="event-manager-title">Event Manager</h3>
 	
-	<div class="list card event-manager" ng-repeat="manager in event.event_manager">
+	<div class="list card" ng-repeat="manager in event.event_manager" style="color:#00d4bd;font-size:20px;background-color:black;opacity:0.5">
       <p>{{manager[0]}}</p>
-	  <p><i class="icon ion-ios-telephone"></i>{{manager[1]}}</p>
+	  <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;{{manager[1]}}</p>
 	  <p><i class="icon ion-email"></i>&nbsp;&nbsp;{{manager[2]}}</p> 
 
     </div>

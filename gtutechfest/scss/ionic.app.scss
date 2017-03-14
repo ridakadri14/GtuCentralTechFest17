@@ -20,6 +20,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $calm:                            #435a6d !default;
 $stable:                          #00d4bd !default;
+$royal:						  #1e2730 !default;
+
+//card border
+
+
+
+//card border
 
 .event-caption { 
    position: absolute; 
@@ -41,6 +48,11 @@ $stable:                          #00d4bd !default;
 
 .event-manager-title{
 	text-align:center;
+}
+
+.accordianActive{
+	background-color:white !important;
+	//color:red !important;
 }
 
 //accordian
@@ -94,7 +106,7 @@ $stable:                          #00d4bd !default;
 	color:$stable;
 }
 
-.responsive-card {
+/*.responsive-card {
     width: 100%;
     float: left;
 }
@@ -105,8 +117,9 @@ $stable:                          #00d4bd !default;
 		left:5%;
 		right:5%;
 		position: absolute;
+		//border-color:$stable;
     }
-}
+}*/
 
 .scroll {
     height: 100%;
