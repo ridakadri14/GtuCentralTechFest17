@@ -1,16 +1,15 @@
 <ion-view view-title="register">
  <ion-content>
  <form name="exampleForm" class="elegant-aero">
-		 <div class="list">
+		 <div class="list" >
 		  <label class="item item-input item-select">
-			<div class="input-label">
+			<div class="input-label" >
 			  <h3>Section</h3>
 			</div>
 			<select ng-model="m.sectionId" ng-change="loadEvents(m.sectionId)" ng-options="section.sectionId as section.sectionName for section in sections">
 			 <option option="value"></option>
 			</select>
 		  </label>
-
 		</div>
 
 		<div class="list">
@@ -28,7 +27,7 @@
 		<div class="list">
 		  <label class="item item-input item-select">
 			<div class="input-label">
-			 <h3>Team Member</h3>
+			 <h3>Team Members</h3>
 			</div>
 			<select ng-model="m.memberNo" ng-change="addMember(m.memberNo)" ng-options="w.memberNo for w in members">
 			  <option></option>
@@ -36,106 +35,112 @@
 		  </label>
 		</div>
 		
-		<div class="text-wrap"><h3>Rules</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five cent.</p></div>
-        <br/> 
+		<div class="text-wrap"><h3 style="padding:5px">Rules</h3><p style="padding:5px">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five cent.</p></div>
+        
 		<div>
-		
+		<form>
 		 <h4>Team Leader</h4>
-		<div class="list">
-            <label class="item item-input">
+		 <div class="list">
+          <label class="item item-input">
                 <span class="input-label">Name</span>
-				<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.name.$error">
-				<!--<div ng-message="required">Required</div>-->
-				</div>
-                <input type="text" name="name" ng-model="name"  required>	
+                <input type="text" name="name" ng-model="name"  required/>
             </label>
-			<br/>
+			<div ng-messages="exampleForm.name.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
 			<label class="item item-input">
                 <span class="input-label">College</span>
-                <input type="text" name="college" ng-model="college"  required>
+                <input type="text" name="college" ng-model="college"  required/>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.college.$error">
-			</div>
-			<br/>
+			<div ng-messages="exampleForm.college.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
 			<label class="item item-input">
                 <span class="input-label">Branch</span>
                 <input type="text" name="branch" ng-model="branch"  required>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.branch.$error">
-			</div>
+			<div ng-messages="exampleForm.branch.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label">Email</span>
                 <input type="email" name="email" ng-model="email"  required>
             </label>
-			<div ng-show="exampleForm.username.$error" ng-messages="exampleForm.email.$error">	
-			<div ng-message="email">Your email address is invalid</div>
-			</div>
+			<div ng-messages="exampleForm.email.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label"> Mobile Number</span>
                 <input type="Tel" name="mobileNo" ng-model="mobileNo" ng-minlength="10" required>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.mobileNo.$error">
-			</div>
+			<div ng-messages="exampleForm.mobileNo.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label">EnrollmentNo</span>
                 <input type="tel" name="enrollmentNo" ng-model="enrollmentNo"  required>
             </label>
-			<div ng-show="exampleForm.username.$error"  ng-messages="exampleForm.enrollmentNo.$error">
-			</div>
-			<br/>
+			<div ng-messages="exampleForm.enrollmentNo.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
+		</div>
 			
 		<div ng-repeat="other in others track by $index">
 		<h4>Team member</h4>
-		<div class="list">
-            <label class="item item-input">
+          <label class="item item-input">
                 <span class="input-label">Name</span>
-				<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.name.$error">
-				<!--<div ng-message="required">Required</div>-->
-				</div>
-                <input type="text" name="name" ng-model="name"  required>	
+                <input type="text" name="nameM" ng-model="nameM"  required/>
             </label>
-			<br/>
+			<div ng-messages="exampleForm.nameM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
 			<label class="item item-input">
                 <span class="input-label">College</span>
-                <input type="text" name="college" ng-model="college"  required>
+                <input type="text" name="collegeM" ng-model="collegeM"  required/>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.college.$error">
-			</div>
-			<br/>
+			<div ng-messages="exampleForm.collegeM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
 			<label class="item item-input">
                 <span class="input-label">Branch</span>
-                <input type="text" name="branch" ng-model="branch"  required>
+                <input type="text" name="branchM" ng-model="branchM"  required>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.branch.$error">
-			</div>
+			<div ng-messages="exampleForm.branchM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label">Email</span>
-                <input type="email" name="email" ng-model="email"  required>
+                <input type="email" name="emailM" ng-model="emailM"  required>
             </label>
-			<div ng-show="exampleForm.username.$error" ng-messages="exampleForm.email.$error">	
-			<div ng-message="email">Your email address is invalid</div>
-			</div>
+			<div ng-messages="exampleForm.emailM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label"> Mobile Number</span>
-                <input type="Tel" name="mobileNo" ng-model="mobileNo" ng-minlength="10" required>
+                <input type="Tel" name="mobileNoM" ng-model="mobileNoM" ng-minlength="10" required>
             </label>
-			<div  ng-show="exampleForm.username.$error" ng-messages="exampleForm.mobileNo.$error">
-			</div>
+			<div ng-messages="exampleForm.mobileNoM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
 			<br/>
 			<label class="item item-input">
                 <span class="input-label">EnrollmentNo</span>
-                <input type="tel" name="enrollmentNo" ng-model="enrollmentNo"  required>
+                <input type="tel" name="enrollmentNoM" ng-model="enrollmentNoM"  required>
             </label>
-			<div ng-show="exampleForm.username.$error"  ng-messages="exampleForm.enrollmentNo.$error">
-			</div>
-			<br/>
-			</div>
-			</div>
+			<div ng-messages="exampleForm.enrollmentNoM.$error">
+		  <div ng-message="required">*Required</div>
+		</div>
+		<br/>
 			</div>
 			<button class="button button-full button-stable" type="submit" ng-submit="">
 			Register

@@ -42,7 +42,8 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('RegisterCtrl', function($scope) {
+.controller('RegisterCtrl', function($scope,breadCrumbsService,disableBackService) {
+	
 	 	 
 	$scope.sections=[{sectionId:1, sectionName:"computer"},{sectiond:2,sectionName:"IT"}];
 	$scope.Events = [{EventId: 1,sectionId:1,EventName: "compevent1"},
@@ -65,8 +66,10 @@ angular.module('starter.controllers', [])
 		})
 			
 	};
+	 
+	
 	var i=0;
-	$scope.teamLeader= {name: "",college:"",branch: "",enrollmentNO: "",mobileNo:"",email: ""};
+	$scope.teamLeader= {name: "",college:"name",branch: "",enrollmentNO: "",mobileNo:"",email: ""};
 		
 	$scope.others=[]
 
@@ -78,10 +81,17 @@ angular.module('starter.controllers', [])
 			$scope.others.push($scope.teamLeader);
 			console.log($scope.others[i]);
 		}
-	}	
+	}
+	
+	  
+
+		breadCrumbsService.showBreadCrumbs();
+		disableBackService.disableBack();
 })
 
 .controller('TechnicalEventsCtrl', function($scope, $stateParams, $rootScope, $location, $ionicHistory, breadCrumbsService,disableBackService) {
+
+	
 	$scope.sections = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },
@@ -500,11 +510,11 @@ angular.module('starter.controllers', [])
 			  title: 'LDCE'
 		  });   
 
-		   var content = '<div id="iw-container">' +
+		   var content = '<div style="float:left">' +
                     '<div><h6>Ld College Of Engineering</h6>'+
-                      '<p style="font-family:courier">University Road,<br/> Ahmedabad 380015</p></div>'+
-                      '<div class="iw-subTitle"><h6>Contacts</div>' +
-                      '<p style="font-family:courier">Phone. +351 234 320 600<br>e-mail: gtucentraltechfest@gmail.com</p>'+
+                      '<p style="font-family:courier">University Road,<br/> Ahmedabad-380015</p></div>'+
+                      '<div><h6>Contacts</h6></div>' +
+                      '<p style="font-family:courier">Mobile No. 9425565525<br>Mobile No. 9425565525<br>e-mail: gtucentraltechfest@gmail.com</p>'+
                     '</div>' +
                   '</div>';
 

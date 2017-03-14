@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.cloud', 'ion-floating-menu'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.cloud', 'ion-floating-menu','ngMessages'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -62,10 +62,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 		var linkText = document.createTextNode(state[i]);
 		a.appendChild(linkText);
 		a.href = breadcrumbs[i];
-		a.style="text-decoration:none;font-size:20px;color:red;";
+		a.style="text-decoration:none;font-size:15px;color:#00d4bd;text-transform:capitalize;fontWeight:bold";
 		var span = document.createElement("span");
 		span.innerHTML = "&nbsp;"+"/"+"&nbsp;"; 
-		span.style="font-size:30px;";
+		span.style="font-size:15px;color:white";
 		document.getElementById("breadcrumb").appendChild(a);
 		document.getElementById("breadcrumb").appendChild(span);
 

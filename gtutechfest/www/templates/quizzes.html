@@ -1,14 +1,14 @@
 <ion-view view-title="Browse">
   <ion-content class="background">
 
-	<div class="list card responsive-card" ng-repeat="quiz in quizzes">
-      <div class="item item-text-wrap item-divider item-stable">
+	<div class="list card responsive-card" ng-repeat="quiz in quizzes" style="margin-top:30px;">
+      <div class="item item-text-wrap item-stable">
         <a style="text-decoration:none;" ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
 			<h3>{{quiz.title}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>
-      <div class="item-image">
+      <div class=" item item-image">
 		<a ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
 		<img width="100%" height="100%" ng-src="img/event.jpg">
 		</a>

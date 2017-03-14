@@ -21,12 +21,43 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $calm:                            #435a6d !default;
 $stable:                          #00d4bd !default;
 $royal:						  #1e2730 !default;
-
+$borderColor:				#00d4bd;
 //card border
 
 
-
+/*.responsive-card{
+	padding:2px;
+	border-radious:2px;
+	border:1px solid $borderColor;
+	
+}*/
 //card border
+
+.responsive-card{
+    width: 100%;
+    float: left;
+	//padding:2px;
+	border-radious:2px;
+	border:1px solid $borderColor;
+	background-color:$calm ;
+	
+}
+
+.list card
+{
+	border-radious:2px;
+	border:1px solid $borderColor;
+
+}
+
+@media screen {
+    .responsive-card{
+        width: 40%;
+		left:5%;
+		right:5%;
+		position:absolute;
+    }
+}
 
 .event-caption { 
    position: absolute; 

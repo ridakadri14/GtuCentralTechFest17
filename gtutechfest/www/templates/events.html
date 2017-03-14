@@ -1,7 +1,7 @@
 <ion-view view-title="Playlist">
   <ion-content class="background">
     <div class="list card" ng-repeat="event in events">
-      <div class="item item-text-wrap item-divider item-stable">
+      <div class="item item-text-wrap item-stable">
         <a style="text-decoration:none;" ng-click="getId(event.id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
 			<h3>{{event.title}}</h3>
 		</a>
