@@ -1,7 +1,7 @@
-<ion-view view-title="Browse">
+<ion-view view-title="Quizzes">
   <ion-content class="background">
 
-	<div class="list card responsive-card" ng-repeat="quiz in quizzes" style="margin-top:30px;">
+	<div class="list card " ng-repeat="quiz in quizzes" style="margin-top:30px;">
       <div class="item item-text-wrap item-stable">
         <a style="text-decoration:none;" ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
 			<h3>{{quiz.title}}</h3>
@@ -17,6 +17,8 @@
 	  
 
     </div>
+  
+	<div style="height:100px"></div>
   
   </ion-content>
 </ion-view>

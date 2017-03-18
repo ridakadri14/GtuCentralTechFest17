@@ -45,9 +45,14 @@ $borderColor:				#00d4bd;
 
 .list card
 {
+	padding:2px;
 	border-radious:2px;
 	border:1px solid $borderColor;
 
+}
+
+.list-card:last-child{
+	margin-bottom:100px !important;
 }
 
 @media screen {
@@ -100,6 +105,15 @@ $borderColor:				#00d4bd;
   padding-bottom: 0;
   transition: 0.09s all linear;
 }
+/*.list .item.item-accordion ul {
+  list-style-type:none !important;
+}*/
+
+.list .item.item-accordion ul {
+  list-style-type:disc !important;
+  margin-left:5px;
+}
+
 
 .list .item.item-accordion.ng-hide {
   line-height: 0px;

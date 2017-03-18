@@ -27,11 +27,11 @@
     </ion-header-bar>
     <ion-content class="background">
       <ion-list class="left-menu">
-        <ion-item menu-close href="#/app/register">
+        <ion-item menu-close ng-click="register()">
           Register
         </ion-item>
-        <ion-item menu-close href="#/app/technicalEvents">
-          TechnicalEvents
+		<ion-item menu-close href="#/app/techEvents">
+          TechEvents
         </ion-item>
         <ion-item menu-close href="#/app/quizzes">
           Quizzes
@@ -39,14 +39,14 @@
 		<ion-item menu-close href="#/app/workshops">
           Workshops
         </ion-item>
+		<ion-item menu-close href="#/app/startupSummits">
+          StartupSummit
+        </ion-item>
 		<ion-item menu-close href="#/app/aboutUs">
           AboutUs
         </ion-item>
 		<ion-item menu-close href="#/app/contactUs">
           ContactUs
-        </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
         </ion-item>
       </ion-list>
     </ion-content>

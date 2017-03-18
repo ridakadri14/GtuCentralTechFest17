@@ -4,13 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.cloud', 'ion-floating-menu','ngMessages'])
+angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ionic.cloud', 'ion-floating-menu','ngSanitize'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
+  $ionicPlatform.ready(function($rootScope,$cordovaNetwork) {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-	localStorage.setItem("api",'YOUR_API');
+	
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -20,6 +20,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+	//network check
+	
+	 
+		// listen for Online event
+		/*$rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+		  alert("online");
+		});
+		 
+		// listen for Offline event
+		$rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+		  alert("offline");
+		});*/
+	
+	//network check
 	
 	//branch
 	
@@ -36,6 +50,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 	//branch
 	
   });
+})
+
+
+.directive('autoComplete',function($http) {
+	var names=[];
+	$http.get('http://portal.gtu.ac.in/api/college/getAllCollege').then(function(response){
+			
+			//alert(JSON.stringify(response.data[0]));
+			
+			for (var i = 0; i < response.data.length; i++){
+					names[i] = response.data[i]['name'];
+					
+			}
+			//alert(names);
+			//return names;
+			
+		},
+		function(err){
+			
+		});
+	return {
+    restrict: 'A',
+    link: function(scope, elem, attr, ctrl) {
+                // elem is a jquery lite object if jquery is not present,
+                // but with jquery and jquery ui, it will be a full jquery object.
+       // debugger
+        $(".input").autocomplete({
+            source: names, //from your service
+            minLength: 2
+        });
+		
+    }
+};
 })
 
 .service('breadCrumbsService', function ($location) {
@@ -62,7 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 		var linkText = document.createTextNode(state[i]);
 		a.appendChild(linkText);
 		a.href = breadcrumbs[i];
-		a.style="text-decoration:none;font-size:15px;color:#00d4bd;text-transform:capitalize;fontWeight:bold";
+		a.style="text-decoration:none;font-size:10px;color:#00d4bd;text-transform:capitalize;fontWeight:bold;";
 		var span = document.createElement("span");
 		span.innerHTML = "&nbsp;"+"/"+"&nbsp;"; 
 		span.style="font-size:15px;color:white";
@@ -83,6 +130,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
             
 })
 
+
+
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -93,24 +142,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
     controller: 'AppCtrl'
   })
 
-  .state('app.register', {
-    url: '/register',
-	cache: false,
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/register.html',
-		controller: 'RegisterCtrl'
-      }
-    }
-  })
   
   .state('app.technicalEvents', {
-    url: '/technicalEvents',
+    url: '/techEvents',
 	cache: false,
     views: {
       'menuContent': {
         templateUrl: 'templates/technicalEvents.html',
-		controller: 'TechnicalEventsCtrl'
+		controller: 'TechEventsCtrl'
       }
     }
   })
@@ -181,6 +220,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
       }
     })	
 	
+	.state('app.startupSummits', {
+      url: '/startupSummits',
+	  cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/startupSummits.html',
+		  controller: 'StartupSummitsCtrl'
+        }
+      }
+    })
+	.state('app.startupSummit', {
+      url: '/startupSummit',
+	  cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/startupSummit.html',
+		  controller: 'StartupSummitCtrl'
+        }
+      }
+    })
+	
 	.state('app.aboutUs', {
       url: '/aboutUs',
 	  cache: false,
@@ -201,29 +261,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'ionic.c
 		  controller: 'ContactUsCtrl'
         }
       }
-    })
+    });
 	
-    .state('app.playlists', {
-      url: '/playlists',
-	  cache: false,
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-	cache: false,
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+     // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/techEvents');
 });

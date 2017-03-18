@@ -1,0 +1,87 @@
+<ion-view view-title="eventname" style="padding-bottom:100px">
+<ion-floating-button click="share()" has-footer="true" button-color="#00d4bd" icon="ion-android-share" iconColor="#fff">
+</ion-floating-button>
+  <ion-content class="background" ><br/>
+  
+
+	<div class="item-image">
+	<!--<img class="image" src={{event.event_pic}}>-->
+	
+	<img class="image" src="img/event.jpg">
+	<p class="event-caption" ><span  style="font-size:15px;">{{event.tagline}}</span></p>
+	</div>
+	
+    <div class="list card">
+      <div class="item item-divider item-stable">
+	  <h3>Description</h3>
+	  </div>
+	  <div class="item item-text-wrap">
+			<p>{{event.description}}</p>
+	</div>
+	</div>
+	
+	<ion-list>
+        <div class="list card" ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{accordionActive: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item id="accordian" class="item-accordion item-text-wrap " 
+						ng-bind-html="group.items"
+                    ng-show="isGroupShown(group)" >
+          </ion-item>
+        </div>
+    </ion-list>
+	
+	<h3 class="event-manager-title" style="color:white">Event Manager</h3>
+	<div style="margin-bottom:100px">
+	<div class="list card" ng-repeat="manager in event.managers" style="color:#00d4bd;font-size:20px;background-color:#435a6d ;border:1.2px solid #00d4bd">
+      <p style="text-align:center;color:#00d4bd;font-size:15px">{{manager.manager_name}}</p>
+	  <p style="color:white;font-size:13px"><i class="icon ion-ios-telephone" style="padding:5px;"></i>&nbsp;&nbsp;{{manager.contact_number}}</p>
+	  <p style="color:white;font-size:13px;overflow:hidden;"><i class="icon ion-email" style="padding:5px;"></i>&nbsp;&nbsp;{{manager.email_id}}</p> 
+    </div>
+	
+	
+	<div class="col text-center">
+	<button class="button button-stable" ng-click="register()">
+	Register
+	</button>
+	</div>
+	</div>
+	<div style="height:100px"></div>
+	
+	
+	
+	<!--<div class="list card">
+
+	  <div ng-repeat="manager in event.event_manager">
+	  <p>{{manager[0]}}</p>
+	  <p><i class="icon ion-ios-telephone"></i>{{manager[1]}}</p>
+	  <p><i class="icon ion-email"></i>&nbsp;&nbsp;{{manager[2]}}</p>  
+	  </div>
+
+    </div>-->
+	
+	<!--<div class="list card" >
+	<div class="item item-divider">
+	  <h3>Devang Bhuva</h3>
+	 </div>
+    <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;1234567891</p>
+	<p><i class="icon ion-email"></i>&nbsp;&nbsp;dasdasddfweffew@gmail.com</p>  
+	</div>
+	
+	<div class="list card" >
+	<div class="item item-divider">
+	  <h3>Devang Bhuva</h3>
+	 </div>
+    <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;1234567891</p>
+	<p><i class="icon ion-email"></i>&nbsp;&nbsp;dasdasddfweffew@gmail.com</p>  
+	</div>-->
+	
+	
+	
+  </ion-content>
+</ion-view>

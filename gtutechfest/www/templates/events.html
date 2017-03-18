@@ -1,14 +1,14 @@
-<ion-view view-title="Playlist">
+<ion-view view-title="sectionName">
   <ion-content class="background">
     <div class="list card" ng-repeat="event in events">
       <div class="item item-text-wrap item-stable">
-        <a style="text-decoration:none;" ng-click="getId(event.id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
-			<h3>{{event.title}}</h3>
+        <a style="text-decoration:none;" ng-click="getId(event._id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
+			<h3>{{event.name}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>
       <div class="item-image">
-		<a ng-click="getId(event.id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
+		<a ng-click="getId(event._id)" href="#/app/technicalEvents/{{sectionTitle}}/{{event.title}}">
 		<img ng-src="img/event.jpg">
 		</a>
         <!--<img ng-src="{{video.snippet.thumbnails.high.url}}">-->
@@ -16,5 +16,7 @@
 	  
 
     </div>
+	
+	<div style="height:100px"></div>
   </ion-content>
 </ion-view>
