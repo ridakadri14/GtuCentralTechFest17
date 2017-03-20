@@ -1,10 +1,10 @@
 <ion-view view-title="Quizzes">
   <ion-content class="background">
 
-	<div class="list card " ng-repeat="quiz in quizzes" style="margin-top:30px;">
+	<div class="list card border" ng-repeat="quiz in quizzes" style="margin-top:30px;background-color:#435a6d">
       <div class="item item-text-wrap item-stable">
-        <a style="text-decoration:none;" ng-click="getId(quiz.id)" href="#/app/quizzes/{{quiz.title}}">
-			<h3>{{quiz.title}}</h3>
+        <a style="text-decoration:none;text-align:center;" ng-click="getQuiz(quiz.title,quiz.master,quiz.des)" href="#/app/quizzes/{{quiz.title}}">
+			<h3 style="color:#333">{{quiz.title}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>

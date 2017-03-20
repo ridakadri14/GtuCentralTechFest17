@@ -4,8 +4,7 @@
   <ion-content class="background" ><br/>
   
 
-	<div class="item-image">
-	<!--<img class="image" src={{event.event_pic}}>-->
+	<!--<div class="item-image">
 	
 	<img class="image" src="img/event.jpg">
 	<p class="event-caption" ><span  style="font-size:15px;">{{event.tagline}}</span></p>
@@ -89,6 +88,29 @@
     <p><i class="icon ion-ios-telephone"></i>&nbsp;&nbsp;1234567891</p>
 	<p><i class="icon ion-email"></i>&nbsp;&nbsp;dasdasddfweffew@gmail.com</p>  
 	</div>-->
+	
+	
+	<div class="card border" style="margin-top:30px;background-color:#435a6d">
+      <div class=" item item-divider item item-text-wrap item-stable">
+        <a style="text-decoration:none;text-align:center;">
+			<h3 style="color:#333">{{workshopTitle}}</h3>
+		</a>
+		<!--<h4>{{video.snippet.description}}</h4>-->
+      </div>
+      <div class=" item-text-wrap">
+		<p  style="color:white;padding:10px;" class="item-text-wrap"><span style="font-weight:bold">Description:</span><br/>
+		{{workshopDescription}}
+		</p>
+      </div>
+	  
+    </div>
+
+	<div class="col text-center">
+	<button class="button button-stable" ng-click="register()">
+	Register
+	</button>
+	</div>
+	</div>
 	
 	
 	

@@ -1,10 +1,12 @@
 <ion-view view-title="TechEvents">
   <ion-content class="background">
+  
+  
 
-	<div class="list card" ng-repeat="section in sections" style="margin-top:30px;">
+	<div class="list card border" ng-repeat="section in sections" style="margin-top:30px;background-color:#435a6d;margin:20px">
       <div class="item item-text-wrap item-stable" >
-        <a style="text-decoration:none;" href="#/app/technicalEvents/{{section.title}}" ng-click="getSectionTitle(section.title)">
-			<h3>{{section.title}}</h3>
+        <a style="text-decoration:none;text-align:center;" href="#/app/technicalEvents/{{section.title}}" ng-click="getSectionTitle(section.title)">
+			<h3 style="color:#333">{{section.title}}</h3>
 		</a>
 		<!--<h4>{{video.snippet.description}}</h4>-->
       </div>

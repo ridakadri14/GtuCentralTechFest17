@@ -40,12 +40,12 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ionic.cl
 	Branch.initSession(function(data) {
       // read deep link data on click
 	  alert(JSON.stringify(data));
-	  
-    }).then(function(res) {
-  alert('Response: ' + JSON.stringify(res));
-}).catch(function(err) {
-  alert('Error: ' + JSON.stringify(err))
-});
+			  
+			}).then(function(res) {
+		  alert('Response: ' + JSON.stringify(res));
+		}).catch(function(err) {
+		  alert('Error: ' + JSON.stringify(err))
+		});
 	
 	//branch
 	
@@ -109,10 +109,10 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova', 'ionic.cl
 		var linkText = document.createTextNode(state[i]);
 		a.appendChild(linkText);
 		a.href = breadcrumbs[i];
-		a.style="text-decoration:none;font-size:10px;color:#00d4bd;text-transform:capitalize;fontWeight:bold;";
+		a.style="text-decoration:none;font-size:13px;color:#00d4bd;text-transform:capitalize;font-weight:bold;";
 		var span = document.createElement("span");
 		span.innerHTML = "&nbsp;"+"/"+"&nbsp;"; 
-		span.style="font-size:15px;color:white";
+		span.style="font-size:13px;color:white;font-weight:bold";
 		document.getElementById("breadcrumb").appendChild(a);
 		document.getElementById("breadcrumb").appendChild(span);
 

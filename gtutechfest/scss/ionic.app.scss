@@ -43,11 +43,12 @@ $borderColor:				#00d4bd;
 	
 }
 
-.list card
+.border
 {
-	padding:2px;
-	border-radious:2px;
-	border:1px solid $borderColor;
+	padding-bottom:2px;
+	border-radious:3px;
+	border:1.5px solid $borderColor;
+	background-color: #435a6d;
 
 }
 

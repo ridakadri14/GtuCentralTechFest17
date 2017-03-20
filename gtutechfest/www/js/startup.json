@@ -1,0 +1,90 @@
+[
+  {
+   "event_name":"GTU CENTRAL TECHFEST 2017",
+   
+   "event_tagline":"@LDCE",
+   
+   "event_pic":"Event Pic",
+   
+   "description":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus",
+   
+   /*"problem_statement":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",*/
+
+   "rules": [ 
+      [ 1) The decision of the panel regarding the incubation will be final and decisions once made will not be reverted. 
+		2) There is no restriction regarding the breadth of fields of ideas. 
+		3) If a student/team is found to be creating disturbances or commotion during the event will be immediately disqualified.
+		4) Incase of any discrepancies, the decision of the GTU Central Techfest Team will be final.
+		5) Prior work done on startups by students i.e. implementation of ideas prior to sending in the ideas, is welcome and such ideas will be prioritized for selection. 
+      ], 
+      [
+	  
+      ],
+	  [
+	  
+	   ]
+    ],
+   
+  /* "specification": [ 
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Aliquam tincidunt mauris eu risus.",
+      "Vestibulum auctor dapibus neque.",
+      "Aliquam tincidunt mauris eu risus.",
+      "Vestibulum auctor dapibus neque."
+    ],*/
+   
+   "judging_criteria":  [ 
+      [ •	The participants have to submit the ideas for their Start-ups. 
+		•	The registrations of which are starting from 17th of March till 27th of March, 5:00 PM. 
+		•	The top 30 ideas will be selected and the results will be declared by 28th of March, 8:00 PM.
+		•	A workshop will be conducted for the shortlisted teams and rules, procedures for the pitching will be explained to them. The myths regarding the business models of the Start-up will be resolved.
+		•	Main focus will be given for improving the presentation and communication skills of the students so that they can have a stronghold beforehand for the corporate world.
+		•	The selected teams will present their ideas in front of few of the successful Start-up founders and the mentors will further scrutinise them and from that top 10 will further advance to the next round.
+		•	In the final round the selected teams will have to present their ideas to the virtual investors. The judges will select the ideas they consider the best ones to incubate.
+		ideas, is welcome and such ideas will be prioritized for selection. 
+      ], 
+      [
+	  •	The participants will be given simple problem statements for each section on the website along with the necessary resources helping them to create a solution.
+		•	The participants will have to submit their solutions through an online module (Plunker, Codepen, Fiddle, etc.) accompanied with a 500-800 words report within a time limit of 10 days.
+		•	Selected teams will be notified through a mail and will be called for the next round. 
+		•	The selected teams will compete in the final coding challenge round which will run for 6 hours.
+		•	The problem statements in the final round will be related to the problems faced in the day-to-day lives by the modern companies.
+		Hackit (Hackathon) will be conducted on the following three sections:
+		1) Machine Learning and Artificial Intelligence.
+		2) Mobile Development
+		3) UI/UX.
+
+
+		
+
+	  
+      ],
+	  [
+	  
+	   ]
+    ],
+
+  "attachment" : [
+      [ "image/pdf.png",
+        "PDF.pdf"
+      ], 
+      [ "image/xls.png",
+        "XLS.xls"
+      ], 
+      [ "image/doc.png",
+        "DOC.doc"
+      ]  
+   ],
+   
+   "event_manager": [ 
+      [ "Devang Bhuva",
+        "+919638947072", 
+        "devangbhuva123@yahoo.com"
+      ], 
+      [ "Devang Bhuva",
+        "+919638947072", 
+        "devangbhuva123@yahoo.com"
+      ] 
+    ]
+ }
+]
